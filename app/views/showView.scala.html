@@ -1,0 +1,61 @@
+@(content: Html)
+<html>
+<head>
+    <title>TQF. Information System </title>
+    <link rel="shortcut icon" href='@routes.Assets.at("images/favicon.png")' type="image/png">
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bootstrap-3.3.7/css/bootstrap.min.css")'>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script src="/assets/stylesheets/bootstrap-3.3.7/js/bootstrap-modal.js"> </script>
+    <script src="/assets/stylesheets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/assets/javascripts/jquery-2.2.4.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body style="background-color: ghostwhite">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="background-color:#2d02ff">
+            @header()
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"  style="background-color:rgba(120, 196, 240, 0.4)">
+            <br><BR><br><BR><br><BR><BR>
+            @leftmenu()
+            <p style="color: blue;text-align: center">
+                ภาคเรียน/ปีการศึกษา : <br>
+                <button class="btn btn-info" onclick="window.location.href='/listYearTerm'">
+                    @if(session.get("year") == null) {
+                        ยังไม่กำหนด <br>
+                        (Click เพื่อกำหนด)
+                    }else {
+
+                        @session.get("semester") / @session.get("year") <br>
+                        (Click เพื่อเลือกใหม่)
+                    }
+                </button>
+
+                <br><hr>
+                <a href="/about" class="btn btn-warning btn-md">
+                    เกี่ยวกับระบบ
+                </a>
+                <br><br>
+            </p>
+        </div>
+
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <br><BR><br><BR> <BR><BR>
+            @content
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+            <br>
+            @footer()
+        </div>
+    </div>
+</body>
+</html>

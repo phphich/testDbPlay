@@ -1,0 +1,63 @@
+@(inputForm:Form[Curriculum])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+<div class="page-header">
+    <h3 style="color: #2d02ff">
+        ข้อมูลหลักสูตร:[New]
+    </h3>
+</div>
+
+@if(session.get("errMsg")){
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <span class="badge alert-danger"><b style="font-size: 20pt;">
+                พบข้อผิดพลาด! </b><br>
+                @session.get("errMsg")
+            </span>
+        </div>
+    </div>
+}
+
+@helper.form(action=routes.Application.createCurriculum(), 'class->"from-control") {
+    <div class="row" style="background-color:aliceblue;color: blue;">
+        <div class="col-md-6">
+            <div class="form-group">
+                @inputText(inputForm("nameTh"), '_label -> "ชื่อหลักสูตร (ภาษาไทย)", 'required->"required",'placeholder -> "ป้อนชื่อหลักสูตรที่นี่", 'MinLength->10, 'MaxLength->100, 'Size->70)
+                @inputText(inputForm("nameEn"), '_label -> "ชื่อหลักสูตร (ภาษาอังกฤษ)", 'required->"required",'placeholder -> "ป้อนชื่อหลักสูตรที่นี่", 'MinLength->10, 'MaxLength->100, 'Size->70)
+                @inputText(inputForm("shortName"), '_label -> "ชื่อย่อหลักสูตร ", 'required->"required",'placeholder -> "ป้อนชื่อย่อหลักสูตรที่นี่", 'MinLength->2, 'MaxLength->5, 'Size->10)
+                @inputRadioGroup(inputForm("status"),
+                options = options("หลักสูตรใหม่" -> "หลักสูตรใหม่", "หลักสูตรปรับปรุง" -> "หลักสูตรปรับปรุง"),'_label -> "สถานะของหลักสูตร")
+                @inputText(inputForm("year"), '_label -> "ปี พ.ศ.", 'required->"required",'placeholder -> "ป้อนปี พ.ศ. ที่นี่",
+                'Size->10, 'pattern->"[.[1-9]*[0-9,.]{4}",'title->"กรุณาระบุตัวเลข 4 หลัก")
+                @inputText(inputForm("director"), '_label -> "ชื่อประธานหลักสูตร", 'required->"required",'placeholder -> "ป้อนชื่อประธานหลักสูตรที่นี่", 'MinLength->10, 'MaxLength->50, 'Size->70)
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @inputDate(inputForm("academicApprove"),'_label-> "วันที่สภาวิชาการอนุมัติ",'required->"required", Symbol("date-date-format") -> "dd/mm/yyyy")
+                @inputDate(inputForm("councilApprove"),'_label-> "วันที่สภามหาวิทยาลัยอนุมัติ", 'required->"required",Symbol("date-date-format") -> "dd/mm/yyyy")
+                @inputDate(inputForm("high_eduApprove"),'_label-> "วันที่ สกอ.รับทราบ", 'required->"required",Symbol("date-date-format") -> "dd/mm/yyyy")
+                @inputText(inputForm("department"), '_label -> "สังกัดสาขา", 'required->"required",'placeholder -> "ป้อนชื่อสาขาที่นี่", 'MinLength->10, 'MaxLength->100, 'Size->70)
+                @inputText(inputForm("faculty"), '_label -> "สังกัดคณะ", 'required->"required",'placeholder -> "ป้อนชื่อคณะที่นี่", 'MinLength->10, 'MaxLength->100, 'Size->70)
+                @inputText(inputForm("university"), '_label -> "มหาวิทยาลัย", 'required->"required",'placeholder -> "ป้อนชื่อมหาวิทยาลัย", 'MinLength->10, 'MaxLength->100, 'Size->70)
+                @inputText(inputForm("place"), '_label -> "สถานที่เรียน", 'required->"required",'placeholder -> "ป้อนสถานที่เรียนที่นี่", 'MinLength->10, 'MaxLength->100, 'Size->70)
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="background-color:aliceblue;text-align: center">
+        <div class="form-group">
+            <button class="btn btn-info" onclick="window.location.href='/listCurriculum'">
+                <span class="glyphicon glyphicon-backward"></span> Back
+            </button>
+            <input type="submit" class="btn btn-success" value="Create">
+            <input type="reset" class="btn btn-danger" value="Clear">
+        </div>
+    </div>
+}
+
+<br><br>

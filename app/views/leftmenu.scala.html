@@ -1,0 +1,144 @@
+@import java.math.BigInteger; var n=0; var i=0;
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+<link rel="stylesheet" type="text/css" href="../../public/stylesheets/bootstrap-3.3.7/css/bootstrap.min.css">
+<div class="container-fluid" >
+    <div id="collapse-admin00" class="panel-collapse collapse in">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a  href="/">
+                <img style="position:relative;left:0px;height:30px" src="/assets/images/home-icon.png"> หน้าหลัก </a>
+            </li>
+        </ul>
+    </div>
+
+    @if(session().get("status-logged")=="admin"){ @*ผู้ดูแลระบบ *@
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <span class="glyphicon  glyphicon-cog"></span>
+                    <a data-toggle="collapse" data-parent="#accordion-admin1" href="#collapse-admin1"> ข้อมูลระบบ: </a>
+                </h4>
+            </div>
+
+            <div id="collapse-admin1" class="panel-collapse collapse in">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="/listCurriculum">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/curriculum-icon.png"> หลักสูตร </a>
+                    </li>
+                    <li><a href="/listCategory">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/category-icon.png"> หมวดวิชา </a>
+                    </li>
+                    <li><a href="/listSubjectGroup">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/subjectGroup-icon.jpg"> กลุ่มวิชา </a>
+                    </li>
+                    <li><a href="/listSubject">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/subject-icon.png"> รายวิชา </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <span class="glyphicon  glyphicon-th-list"></span>
+                    <a data-toggle="collapse" data-parent="#accordion-admin2" href="#collapse-admin2"> มาตรฐาน: </a>
+                </h4>
+            </div>
+
+            <div id="collapse-admin2" class="panel-collapse collapse in">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="/listOutcomeStandard">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/outcome-icon.png"> มาตรฐานการเรียนรู้</a>
+                    </li>
+                    <li><a  href="/listTeachStandard">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/teach-icon.png"> กลยุทธ์การสอน </a>
+                    </li>
+                    <li><a  href="/listEvaluateStandard">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/evaluate-icon.png"> กลยุทธ์การประเมินผลการเรียน </a>
+                    </li>
+                    <li><a href="/listBloomBehavior">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/bloom-icon.png"> จุดมุ่งหมายการเรียนรู้ </a>
+                    </li>
+                    <li>
+                        <a href="/listCurriculumMapping">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/mapping-icon.ico"> แผนที่การกระจายความรับผิดชอบ </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <span class="glyphicon  glyphicon-folder-open"></span>
+                    <a data-toggle="collapse" data-parent="#accordion-admin3" href="#collapse-admin3"> การจัดการ มคอ.: </a>
+                </h4>
+            </div>
+
+            <div id="collapse-admin3" class="panel-collapse collapse in">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a  href="/listTeachAssign">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/assignment-icon.png"> กำหนดตัวผู้สอนรายวิชา </a>
+                    </li>
+                    <li><a  href="/listDoc3">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/doc3new-icon.png"> มคอ. 3</a>
+                    </li>
+                    <li><a  href="/listDoc4">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/doc3new-icon.png"> มคอ. 4</a>
+                    </li>
+                    <li><a  href="/listDoc5">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/doc5new-icon.png"> มคอ. 5 </a>
+                    </li>
+                    <li><a  href="/listDoc6">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/doc5new-icon.png"> มคอ. 6 </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <span class="glyphicon  glyphicon-user"></span>
+                    <a data-toggle="collapse" data-parent="#accordion-admin4" href="#collapse-admin4"> ผู้ใช้ระบบ: </a>
+                </h4>
+            </div>
+
+            <div id="collapse-admin4" class="panel-collapse collapse in">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a  href="/listTeacher">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/teacher-icon.png"></span> อาจารย์ผู้สอน </a>
+                    </li>
+                    <li><a  href="/adminProfile">
+                        <img style="position:relative;left:0px;height:20px" src="/assets/images/user-icon.jpg"> รายละเอียดส่วนตัว </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    }else{  @*ผู้ใช้ทั่วไป *@
+        <div class="panel-group" id="accordion0">
+            <div class="panel panel-primary" style="width: 100%">
+                <div class="panel-heading" style="width: 100%">
+                    <h4 class="panel-title" style="width: 100%">
+                        <img class="img-circle"  style="position:relative;left:0px;height:25px" src="/assets/images/home-icon.png">
+                        <a data-toggle="collapse" data-parent="#accordion0" href="#collapse00"> หน้าหลัก: </a>
+                    </h4>
+                </div>
+                <div id="collapse00" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

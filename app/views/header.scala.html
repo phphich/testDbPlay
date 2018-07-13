@@ -1,0 +1,54 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #5e98ff" >
+
+    <div class="container-fluid col-sm-2"  style="vertical-align: middle;">
+        <img class="img-rounded img-responsive" src="/assets/images/tqf-logo.png"
+             onclick='location.href="/"' style="margin: auto auto; width: 200px; vertical-align: middle;" >
+    </div>
+
+    <div class="container-fluid  col-sm-8 panel-primary" >
+        <h3 style="color: white">
+            <b style="font-size:36px">
+                ระบบสารสนเทศกรอบมาตรฐานคุณวุฒิระดับอุดมศึกษาแห่งชาติ
+            </b><br>
+            <b style="font-size:20px;color: yellow">Thai Qualifications Framework for Higher Education, TQF: HEd </b>
+        </h3>
+        <b style="font-size:16px;color:orange;">R&nbsp; a&nbsp; j&nbsp; a&nbsp;
+            m&nbsp; a&nbsp; n&nbsp; g&nbsp; a&nbsp; l&nbsp; a&nbsp;&nbsp;&nbsp;&nbsp;
+            U&nbsp; n&nbsp; i&nbsp; v&nbsp; e&nbsp; r&nbsp; s&nbsp;
+            i&nbsp; t&nbsp; y&nbsp;&nbsp;&nbsp;&nbsp;
+            o&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;
+            T&nbsp; e&nbsp; c&nbsp; h&nbsp; n&nbsp; o&nbsp;
+            l&nbsp; o&nbsp; g&nbsp; y&nbsp;&nbsp;
+        </b>
+    </div>
+
+    <div class="container-fluid col-sm-2" align="right"> <br>
+        @if(session.get("userName-logged")==null) {
+        <ul class="nav navbar-nav navbar-right" style="alignment: right">
+            <li>
+                <a href="/userLogin">
+                    <span class="glyphicon glyphicon-log-in"></span>
+                    Login
+                </a>
+            </li>
+            <li> <a class="logout"><i style="color:greenyellow">(No logging in...)</i></a></li>
+        </ul>
+        }else {
+        <div class="col-sm-10" align="right">
+            <i style="color:white">
+                User: @session.get("userName-logged") <br>
+                Status: @session.get("status-logged") <br>
+                <a class="logout" href="/userLogout" style="color: yellow">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    Logout
+                </a>
+            </i>
+        </div>
+        <div class="col-sm-2" align="left">
+            <img class="img-rounded"  style="position:relative;left:0px;height:80px"
+                 src='/assets/images/member/@session().get("memberPicture-logged")'>
+            <br><br>
+        </div>
+        }
+    </div>
+</nav>
