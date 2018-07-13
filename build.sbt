@@ -5,7 +5,7 @@ version := "1.0-SNAPSHOT"
 libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
-  "mysql" % "mysql-connector-java" % "5.1.37",
+  "org.postgresql" % "postgresql" % "9.4-1201-jdbc41",
   cache
 )     
 
