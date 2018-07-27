@@ -11,9 +11,9 @@ create table tbCurriculum (
   status                    varchar(255),
   year                      integer,
   director                  varchar(255),
-  academic_approve          datetime,
-  council_approve           datetime,
-  high_edu_approve          datetime,
+  academic_approve          timestamp,
+  council_approve           timestamp,
+  high_edu_approve          timestamp,
   department                varchar(255),
   faculty                   varchar(255),
   university                varchar(255),
@@ -21,14 +21,14 @@ create table tbCurriculum (
   constraint pk_tbCurriculum primary key (cu_id))
 ;
 
+create sequence tbCurriculum_seq;
+
 
 
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+drop table if exists tbCurriculum cascade;
 
-drop table tbCurriculum;
-
-SET FOREIGN_KEY_CHECKS=1;
+drop sequence if exists tbCurriculum_seq;
 
