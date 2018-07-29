@@ -23,6 +23,8 @@ public class Application extends Controller {
         return ok(showView.render(content));
     }
 
+
+
     public static Result home() {
         return showView(home.render());
     }
